@@ -32,66 +32,67 @@ function App() {
   const format = (num) => String(num).padStart(2, "0");
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
-      <div className="border-4 border-gray-300 p-8 rounded-2xl shadow-xl bg-white">
-        <h2 className="text-4xl font-extrabold text-blue-600 text-center mb-6 drop-shadow-lg uppercase">
+    <div className="min-h-screen flex justify-center items-center bg-gray-100 px-4">
+      <div className="border-4 border-gray-300 p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl bg-white w-full max-w-md sm:max-w-lg">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600 text-center mb-6 drop-shadow-lg uppercase">
           Stop Watch
         </h2>
 
-        <div className="flex items-center justify-center space-x-10 mb-6">
-          {/* Hours */}
-          <div className="flex flex-col items-center">
-            <span className="text-5xl font-bold">{format(time.minutes)}</span>
-            <span className="text-sm text-gray-500">Minutes</span>
-          </div>
-
-          {/* Colon */}
-          <span className="text-5xl font-bold leading-none">:</span>
-
+        <div className="flex items-center justify-center space-x-4 sm:space-x-6 md:space-x-10 mb-6">
           {/* Minutes */}
           <div className="flex flex-col items-center">
-            <span className="text-5xl font-bold">{format(time.seconds)}</span>
-            <span className="text-sm text-gray-500">Seconds</span>
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+              {format(time.minutes)}
+            </span>
+            <span className="text-xs sm:text-sm text-gray-500">Minutes</span>
           </div>
 
-          {/* Colon */}
-          <span className="text-5xl font-bold leading-none">:</span>
+          <span className="text-3xl sm:text-4xl md:text-5xl font-bold">:</span>
 
           {/* Seconds */}
           <div className="flex flex-col items-center">
-            <span className="text-5xl font-bold">{format(time.millisec)}</span>
-            <span className="text-sm text-gray-500">MilliSec</span>
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+              {format(time.seconds)}
+            </span>
+            <span className="text-xs sm:text-sm text-gray-500">Seconds</span>
+          </div>
+
+          <span className="text-3xl sm:text-4xl md:text-5xl font-bold">:</span>
+
+          {/* Milliseconds */}
+          <div className="flex flex-col items-center">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+              {format(time.millisec)}
+            </span>
+            <span className="text-xs sm:text-sm text-gray-500">MilliSec</span>
           </div>
         </div>
 
-        <div className="flex justify-center space-x-4">
-          {/* Start Button */}
+        <div className="flex flex-wrap justify-center gap-3">
           <button
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-600 shadow disabled:bg-green-300 disabled:cursor-not-allowed disabled:text-gray-200"
+            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-600 shadow disabled:bg-green-300 disabled:cursor-not-allowed"
             onClick={() => setRunning(true)}
             disabled={running}
           >
-            <Play size={20} /> Start
+            <Play size={18} /> Start
           </button>
 
-          {/* Stop Button */}
           <button
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 shadow disabled:bg-red-300 disabled:cursor-not-allowed disabled:text-gray-200"
+            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 shadow disabled:bg-red-300 disabled:cursor-not-allowed"
             onClick={() => setRunning(false)}
             disabled={!running}
           >
-            <Pause size={20} /> Stop
+            <Pause size={18} /> Stop
           </button>
 
-          {/* Reset Button */}
           <button
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 shadow disabled:bg-blue-300 disabled:cursor-not-allowed disabled:text-gray-200"
+            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 shadow"
             onClick={() => {
               setRunning(false);
               setTime({ minutes: 0, seconds: 0, millisec: 0 });
             }}
           >
-            <RotateCw size={20} /> Reset
+            <RotateCw size={18} /> Reset
           </button>
         </div>
       </div>
